@@ -33,6 +33,7 @@ jobs:
         run: |
           git add -f _site
           git commit -am "auto push"
-          git push origin gh-pages
+          git push
           
-      
+      - name : check
+        run : echo "finish"
