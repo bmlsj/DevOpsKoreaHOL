@@ -31,6 +31,7 @@ jobs:
         
       - name: git push
         run: |
+          git pull
           git add -f _site
           git commit -am "auto push"
           git push
