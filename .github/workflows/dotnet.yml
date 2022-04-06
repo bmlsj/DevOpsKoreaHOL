@@ -28,7 +28,7 @@ jobs:
       - name: git push
         run: 
           git add _site
-          git commit -am "auto push"
+          git commit -m "auto push"
           git push origin gh-pages
           
       
