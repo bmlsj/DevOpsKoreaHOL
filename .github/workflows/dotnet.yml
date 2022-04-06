@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run dotnet
-        run: dotnet run -p generator/src/generator.csproj -- . "http://localhost:8000/" _site
+        run: dotnet run -p generator/src/generator.csproj -- . "https://bmlsj.github.io/DevOpsKoreaHOL/" _site
         
       - name : copy asset
         run : ./copy-assets.bash _site
@@ -25,13 +25,16 @@ jobs:
         run : | 
               git config --global user.email "gaga2353@gmail.com"
               git config --global user.name "bmlsj"
+              
+      - name : branch
+        run : git branch
         
       - name: git push
         run: |
           git pull
           git add -f '_site'
           git commit -am "auto push"
-          git push
+          git push origin `git subtree split --prefix _site main`:gh-pages --force
           
       - name : check
         run : echo "finish"
