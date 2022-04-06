@@ -1,0 +1,34 @@
+# This is a basic workflow to help you get started with Actions
+
+name: dotnet
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run dotnet
+        run: dotnet run -p generator/src/generator.csproj -- . "http://localhost:8000/" _site
+        
+      - name : copy asset
+        run : ./copy-assets.bash _site
+        
+      - name : branch
+        run : git checkout -b "gh-pages"
+        
+      - name: git push
+        run: 
+          git add _site
+          git commit -am "auto push"
+          git push origin gh-pages
+          
+      
