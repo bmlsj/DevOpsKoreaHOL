@@ -25,16 +25,13 @@ jobs:
         run : | 
               git config --global user.email "gaga2353@gmail.com"
               git config --global user.name "bmlsj"
-              
-      - name : branch
-        run : git checkout -b "gh-pages"
         
       - name: git push
         run: |
           git reset --hard origin/gh-pages
           git add -f '_site'
           git commit -am "auto push"
-          git push
+          git push origin gh-pages
           
       - name : check
         run : echo "finish"
