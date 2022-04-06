@@ -28,10 +28,10 @@ jobs:
         
       - name: git push
         run: |
-          git reset --hard origin/gh-pages
+          git pull
           git add -f '_site'
           git commit -am "auto push"
-          git push origin gh-pages
+          git push
           
       - name : check
         run : echo "finish"
