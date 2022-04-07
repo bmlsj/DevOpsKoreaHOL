@@ -35,7 +35,7 @@ jobs:
               
       # main의 최신 id               
       - name : main id
-        run : git rev-parse main  | read main_id
+        run : git rev-parse main | read main_id
       
       # upstream/main의 최신 id
       - name : upstream id
@@ -44,6 +44,7 @@ jobs:
         
       # main_id, upstream_id 같은지 확인
       - name : check version   
+        shell : bash
         run : |
              # main_id = ${{git rev-parse main}}
              # upstream_id = ${{git rev-parse upstream/main}}
