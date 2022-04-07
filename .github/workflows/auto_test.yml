@@ -57,7 +57,7 @@ jobs:
       - name : git action
         if : ${{env.state}} == 'false'    # 다르면
         run : | 
-              git checkout origin/main    # 변경 내용확인
+              git checkout main           # 변경 내용확인
               git merge upstream/main
               git push origin main
               git status
