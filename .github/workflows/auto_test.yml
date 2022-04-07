@@ -26,7 +26,7 @@ jobs:
       # remote
       - name: remote upstream
         run : |
-              git remote add upstream https://github.com/microsoft/Web-Dev-For-Beginners.git
+              git remote add upstream https://github.com/ianychoi/DevOpsKoreaHOL.git
               git remote -v
       
       # fetch
