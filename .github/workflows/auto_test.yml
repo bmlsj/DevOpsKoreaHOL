@@ -46,14 +46,10 @@ jobs:
       - name : check version   
         shell : bash
         run : |
-             # main_id = ${{git rev-parse main}}
-             # upstream_id = ${{git rev-parse upstream/main}}
-              
               if [ $main_id = $upstream_id ]; then                       # already up-to-date
                 echo "state = true" >> $GITHUB_ENV   
                 echo "already up-to-date"
-        
-              else (git rev-parse main != git rev-parse upstream/main)     # need to update
+              else                                                       # need to update
                 echo "state = false" >> $GITHUB_ENV  
               fi
               
