@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>http://localhost:8000/hol/hol.html</loc>
-		<lastmod>2022-04-06</lastmod>
+		<loc>https://bmlsj.github.io/DevOpsKoreaHOL/alive.html</loc>
+		<lastmod>2022-04-07</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-		<loc>http://localhost:8000/index.html</loc>
-		<lastmod>2022-04-06</lastmod>
+		<loc>https://bmlsj.github.io/DevOpsKoreaHOL/index.html</loc>
+		<lastmod>2022-04-07</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-		<loc>http://localhost:8000/credit.html</loc>
-		<lastmod>2022-04-06</lastmod>
+		<loc>https://bmlsj.github.io/DevOpsKoreaHOL/credit.html</loc>
+		<lastmod>2022-04-07</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-		<loc>http://localhost:8000/alive.html</loc>
-		<lastmod>2022-04-06</lastmod>
+		<loc>https://bmlsj.github.io/DevOpsKoreaHOL/hol/hol.html</loc>
+		<lastmod>2022-04-07</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 </urlset>
