@@ -1,0 +1,68 @@
+# This is a basic workflow to help you get started with Actions
+
+name: auto_test
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+          issues: write
+          
+    steps:
+
+      - uses: actions/checkout@v3
+  
+      # remote
+      - name: remote upstream
+        run : |
+              git remote add upstream https://github.com/microsoft/Web-Dev-For-Beginners.git
+              git remote -v
+      
+      # fetch
+      - name : fetch upstream
+        run : git fetch upstream 
+              
+      # main의 최신 id               
+      - name : main id
+        run : git rev-parse main  | read main_id
+      
+      # upstream/main의 최신 id
+      - name : upstream id
+        run : git rev-parse upstream/main | read upstream_id
+        
+        
+      # main_id, upstream_id 같은지 확인
+      - name : check version   
+        run : |
+             # main_id = ${{git rev-parse main}}
+             # upstream_id = ${{git rev-parse upstream/main}}
+              
+              if [ $main_id = $upstream_id ]; then                       # already up-to-date
+                echo "state = true" >> $GITHUB_ENV   
+                echo "already up-to-date"
+        
+              else (git rev-parse main != git rev-parse upstream/main)     # need to update
+                echo "state = false" >> $GITHUB_ENV  
+              fi
+              
+              
+      - name : git action
+        if : ${{env.state}} == 'false'    # 다르면
+        run : | 
+              git checkout origin/main    # 변경 내용확인
+              git merge upstream/main
+              git push origin main
+              git status
+              
+              echo "finish"
